@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siva Sathwik Mungara - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 35, 126, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #64b5f6;
+        }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1a237e;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
+            background-image: url('assets/pic.png');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 16px 40px rgba(26, 35, 126, 0.18);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .hero .social-links a {
+            color: #1a237e;
+            background: white;
+            box-shadow: 0 8px 24px rgba(26, 35, 126, 0.12);
+        }
+        .hero .social-links a:hover {
+            background: #e3f2fd;
+        }
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a237e;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #3949ab, #64b5f6);
+            border-radius: 2px;
+        }
+        /* Bio Section */
+        .bio {
+            background: #f8f9fa;
+        }
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        /* Bio Loading Effect */
+        .bio-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+        .bio-text.typing {
+            opacity: 1;
+            border-right: 2px solid #3949ab;
+            animation: blink-cursor 1s infinite;
+        }
+        .bio-text.finished {
+            opacity: 1;
+            border-right: none;
+        }
+        @keyframes blink-cursor {
+            0%, 50% { border-color: #3949ab; }
+            51%, 100% { border-color: transparent; }
+        }
+        .name-loading {
+            font-size: 2.5rem;
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+        .name-loading.visible {
+            opacity: 1;
+            animation: slideInUp 1s ease-out;
+        }
+        .loading-dots {
+            display: inline-block;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0%, 20% { opacity: 0; }
+            50% { opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        .contact-item {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(26, 35, 126, 0.08);
+            border: 1px solid #e8ecf8;
+            transition: transform 0.3s ease;
+        }
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+        .contact-item i {
+            font-size: 1.4rem;
+            color: #3949ab;
+            margin-bottom: 0.75rem;
+        }
+        .contact-item h3 {
+            font-size: 1rem;
+            color: #1a237e;
+            margin-bottom: 0.35rem;
+        }
+        .contact-item p {
+            color: #555;
+            font-size: 0.98rem;
+            word-break: break-word;
+        }
+        /* Education Section */
+        .education {
+            background: white;
+        }
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .education-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3949ab;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(26, 35, 126, 0.08);
+        }
+        .education-card h3 {
+            color: #1a237e;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .education-card p {
+            color: #555;
+            margin-bottom: 0.35rem;
+        }
+        .education-meta {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #1565c0;
+            font-weight: 600;
+        }
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(57, 73, 171, 0.2);
+            border-color: #3949ab;
+        }
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #3949ab, #64b5f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        .skill-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        /* Projects Section */
+        .projects {
+            background: #f8f9fa;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .project-img {
+            height: 200px;
+            background: linear-gradient(45deg, #3949ab, #64b5f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .project-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .project-cover:hover {
+            transform: scale(1.03);
+        }
+        .project-content {
+            padding: 2rem;
+        }
+        .project-content h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .project-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #1a237e;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .project-link:hover {
+            color: #3949ab;
+        }
+        .tech-tag {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+        .cert-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e8f5e8, #c8e6c9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4caf50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .cert-placeholder:hover {
+            transform: scale(1.05);
+        }
+        .cert-placeholder::after {
+            content: '🔍';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .cert-placeholder:hover::after {
+            opacity: 1;
+        }
+        .cert-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close:hover,
+        .close:focus {
+            color: #333;
+        }
+        .modal-cert-img {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #f0f8ff, #e3f2fd);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #1565c0;
+            margin-bottom: 2rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .modal-cert-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        /* Resume Section */
+        .resume {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            cursor: pointer;
+            border: none;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: rgba(26, 35, 126, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+            .mobile-menu {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section {
+                padding: 60px 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Download notification */
+        .download-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1500;
+        }
+        .download-notification.show {
+            transform: translateX(0);
+        }
+        .download-notification.error {
+            background: #f44336;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Siva Sathwik's portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#bio">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#resume">Resume</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-img"></div>
+            <h1>Siva Sathwik Mungara</h1>
+            <p>Computer Science Student | Web Developer | Problem Solver</p>
+            <div class="social-links">
+                <a href="mailto:sivasathwikmungara@gmail.com?subject=Contact from Portfolio&body=Hi Siva Sathwik,%0D%0A%0D%0AI found your portfolio and would like to get in touch." title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/siva-sathwik-mungara-a22723288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Sivasathwik" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/sivasathwikchintu/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="tel:8106959655" title="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="section bio">
+        <div class="fade-in">
+            <h2 class="section-title">About Me</h2>
+            <div class="bio-content">
+                <h3 class="name-loading">Siva Sathwik Mungara <span class="loading-dots">...</span></h3>
+                <p class="bio-text" id="bioText"></p>
+                
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:sivasathwikmungara@gmail.com?subject=Contact from Portfolio&body=Hi Siva Sathwik,%0D%0A%0D%0AI found your portfolio and would like to get in touch." style="color: #3949ab; text-decoration: none;">sivasathwikmungara@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p><a href="tel:8106959655" style="color: #3949ab; text-decoration: none;">+91 8106959655</a></p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Andhra Pradesh, Nellore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education">
+        <div class="fade-in">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card fade-in">
+                    <h3>Bachelor of Engineering</h3>
+                    <p>Course: Computer Science and Engineering</p>
+                    <p>SIMATS Saveetha School of Engineering, Chennai</p>
+                    <span class="education-meta">2022 - 2026 | CGPA: 8.2 / 10.0</span>
+                </div>
+                <div class="education-card fade-in">
+                    <h3>Board of Intermediate</h3>
+                    <p>Course: MPC</p>
+                    <p>Narayana Junior College, Nellore</p>
+                    <span class="education-meta">2020 - 2022 | CGPA: 9.07 / 10.0</span>
+                </div>
+                <div class="education-card fade-in">
+                    <h3>Board of Secondary Education</h3>
+                    <p>Ratnam High School, Nellore</p>
+                    <span class="education-meta">2019 - 2020 | Marks: 586 / 600</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="fade-in">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Programming & Data Analysis</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>Database Management</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5</h3>
+                    <p>Web Structure & Markup</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS3</h3>
+                    <p>Styling & Animations</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Interactive Web Development</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>MS Excel</h3>
+                    <p>Data Analysis & Reporting</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React.js</h3>
+                    <p>Frontend UI Development</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>Backend APIs with Express</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>MongoDB</h3>
+                    <p>NoSQL Database Design</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git & GitHub</h3>
+                    <p>Version Control Workflow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="fade-in">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img class="project-cover" src="assets/seo-rank-tracker.png" alt="AI-Powered SEO Rank Tracker homepage" onclick="openImageModal('assets/seo-rank-tracker.png', 'AI-Powered SEO Rank Tracker', 'Homepage preview of the live SEO Rank Tracker platform.')">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered SEO Rank Tracker</h3>
+                        <p>Built a full-stack SEO analysis and keyword tracking platform with secure authentication, ranking history, automated website audits, and competitor analysis powered by Gemini AI and Browserbase.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Gemini AI</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="project-link" href="https://seo-rank-tracker-bay-five.vercel.app/" target="_blank" rel="noopener">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                            <a class="project-link" href="https://github.com/Sivasathwik" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Personalized Learning Platform</h3>
+                        <p>Developed a web-based learning platform that analyzes user behavior and preferences to recommend personalized learning content using machine learning concepts.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Web App</span>
+                            <span class="tech-tag">Recommendation System</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="project-link" href="https://github.com/Sivasathwik" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>Created a responsive portfolio website to showcase technical skills, certifications, projects, resume, and contact links for job applications and recruiter review.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="project-link" href="#home">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="fade-in">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('oracle')">
+                        <img class="cert-thumb" src="assets/oracle-cert.jpg" alt="Oracle APEX Cloud Developer certificate">
+                    </div>
+                    <h3>Oracle APEX Cloud Developer</h3>
+                    <p>Professional badge demonstrating Oracle APEX cloud development and database-backed application skills.</p>
+                    <small>Issued by: Oracle</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('aws')">
+                        <img class="cert-thumb" src="assets/aws-cert.jpg" alt="AWS Cloud Practitioner certificate">
+                    </div>
+                    <h3>AWS Cloud Practitioner</h3>
+                    <p>AWS Academy graduate badge covering cloud fundamentals, core AWS services, security, and cloud concepts.</p>
+                    <small>Issued by: AWS</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('python')">
+                        <img class="cert-thumb" src="assets/python-cert.jpg" alt="Python Programming certificate">
+                    </div>
+                    <h3>Python Programming</h3>
+                    <p>Comprehensive Python programming certification covering advanced concepts, data structures, and application development.</p>
+                    <small>Issued by: Great Learning Academy</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('c')">
+                        <img class="cert-thumb" src="assets/c-cert.jpg" alt="C Programming certificate">
+                    </div>
+                    <h3>C Programming</h3>
+                    <p>Fundamental programming certification in C language covering algorithms, data structures, and system programming.</p>
+                    <small>Issued by: Great Learning Academy</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('time')">
+                        <img class="cert-thumb" src="assets/time-cert.jpg" alt="Time Management certificate">
+                    </div>
+                    <h3>Time Management</h3>
+                    <p>Professional development certification focusing on productivity, organization, and effective time utilization strategies.</p>
+                    <small>Issued by: Professional Development Institute</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('excel')">
+                        <img class="cert-thumb" src="assets/excel-cert.jpg" alt="MS Excel Advanced certificate">
+                    </div>
+                    <h3>MS Excel Advanced</h3>
+                    <p>Advanced Microsoft Excel certification covering data analysis, pivot tables, macros, and business intelligence tools.</p>
+                    <small>Issued by: Microsoft</small>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-placeholder" onclick="openModal('appreciation')">
+                        <img class="cert-thumb" src="assets/appreciation-cert.jpg" alt="Certificate of Appreciation">
+                    </div>
+                    <h3>Certificate of Appreciation</h3>
+                    <p>Recognition certificate for outstanding performance, dedication, and valuable contributions to projects and initiatives.</p>
+                    <small>Issued by: Saveetha School of Engineering</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalCertImg" class="modal-cert-img">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h2 id="modalTitle">Certificate Title</h2>
+            <p id="modalDescription">Certificate description will appear here.</p>
+            <small id="modalIssuer">Issued by: Institution</small>
+        </div>
+    </div>
+
+    <!-- Download Notification -->
+    <div id="downloadNotification" class="download-notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Resume download started!</span>
+    </div>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section resume">
+        <div class="fade-in">
+            <h2 class="section-title" style="color: white;">Download Resume</h2>
+            <p>Get a copy of my complete resume with education, technical skills, projects, certifications, and achievements.</p>
+            <a class="download-btn" href="assets/RESUME.pdf" download="Siva-Sathwik-Mungara-Resume.pdf" onclick="showNotification('Resume download started!')">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section">
+            <p>&copy; 2026 Siva Sathwik Mungara. All rights reserved.</p>
+            <div class="social-links" style="margin-top: 1rem;">
+                <a href="mailto:sivasathwikmungara@gmail.com?subject=Contact from Portfolio&body=Hi Siva Sathwik,%0D%0A%0D%0AI found your portfolio and would like to get in touch."><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/siva-sathwik-mungara-a22723288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Sivasathwik" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/sivasathwikchintu/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(26, 35, 126, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(26, 35, 126, 0.95)';
+            }
+        });
+        
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Show notification function
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('downloadNotification');
+            const text = document.getElementById('notificationText');
+            
+            text.textContent = message;
+            
+            if (isError) {
+                notification.classList.add('error');
+                notification.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>' + message + '</span>';
+            } else {
+                notification.classList.remove('error');
+                notification.innerHTML = '<i class="fas fa-check-circle"></i><span>' + message + '</span>';
+            }
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+        
+        // Resume download function kept for older buttons.
+        function downloadResume() {
+            try {
+                showNotification('Resume download started!');
+                window.location.href = 'assets/RESUME.pdf';
+            } catch (error) {
+                console.error('Download failed:', error);
+                showNotification('Resume file could not be opened. Please try again.', true);
+            }
+        }
+        
+        // Bio typing effect
+        function startBioTyping() {
+            const bioText = "A Computer Science Engineering student at SIMATS Saveetha School of Engineering with strong skills in Python, SQL, OOP, Git, and full-stack web development. I enjoy building AI-powered and web-based applications that solve real-world problems, including SEO analytics tools and personalized learning platforms. I am committed to continuous learning, clean development practices, and building scalable software with practical impact.";
+            const bioElement = document.getElementById('bioText');
+            const nameElement = document.querySelector('.name-loading');
+            let i = 0;
+            const speed = 30;
+            
+            // Show name first
+            nameElement.classList.add('visible');
+            
+            // Start bio typing after name animation
+            setTimeout(() => {
+                bioElement.classList.add('typing');
+                
+                function typeWriter() {
+                    if (i < bioText.length) {
+                        bioElement.innerHTML = bioText.substring(0, i + 1);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    } else {
+                        bioElement.classList.remove('typing');
+                        bioElement.classList.add('finished');
+                        // Hide loading dots
+                        document.querySelector('.loading-dots').style.display = 'none';
+                    }
+                }
+                
+                typeWriter();
+            }, 1000);
+        }
+        
+        // Bio section intersection observer
+        const bioObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.id === 'bio') {
+                    startBioTyping();
+                    bioObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Initialize bio observer after page load
+        window.addEventListener('load', () => {
+            bioObserver.observe(document.getElementById('bio'));
+        });
+        
+        // Certificate modal functions - Updated with placeholder certificate display
+        const certData = {
+            oracle: {
+                title: "Oracle APEX Cloud Developer",
+                description: "Professional badge demonstrating Oracle APEX cloud development and database-backed application skills.",
+                issuer: "Oracle",
+                icon: "fas fa-certificate",
+                color: "#f39c12",
+                image: "assets/oracle-cert.jpg"
+            },
+            aws: {
+                title: "AWS Cloud Practitioner",
+                description: "AWS Academy graduate badge covering cloud fundamentals, core AWS services, security, and cloud concepts.",
+                issuer: "AWS",
+                icon: "fab fa-aws",
+                color: "#ff9900",
+                image: "assets/aws-cert.jpg"
+            },
+            python: {
+                title: "Python Programming", 
+                description: "Comprehensive Python programming certification covering advanced concepts, data structures, web development, and application development using modern Python frameworks.",
+                issuer: "Great Learning Academy",
+                icon: "fab fa-python",
+                color: "#3776ab",
+                image: "assets/python-cert.jpg"
+            },
+            c: {
+                title: "C Programming",
+                description: "Fundamental programming certification in C language covering algorithms, data structures, memory management, and system programming concepts.",
+                issuer: "Great Learning Academy",
+                icon: "fas fa-code",
+                color: "#00599c",
+                image: "assets/c-cert.jpg"
+            },
+            time: {
+                title: "Time Management",
+                description: "Professional development certification focusing on productivity enhancement, organization skills, priority management, and effective time utilization strategies for better work-life balance.",
+                issuer: "Professional Development Institute",
+                icon: "fas fa-clock",
+                color: "#e74c3c",
+                image: "assets/time-cert.jpg"
+            },
+            excel: {
+                title: "MS Excel Advanced",
+                description: "Advanced Microsoft Excel certification covering complex formulas, data analysis, pivot tables, macros, VBA programming, and business intelligence tools for data-driven decision making.",
+                issuer: "Microsoft",
+                icon: "fas fa-file-excel",
+                color: "#1d6f42",
+                image: "assets/excel-cert.jpg"
+            },
+            appreciation: {
+                title: "Certificate of Appreciation",
+                description: "Recognition certificate awarded for outstanding performance, exceptional dedication, leadership qualities, and valuable contributions to academic projects and extracurricular initiatives.",
+                issuer: "Saveetha School of Engineering",
+                icon: "fas fa-award",
+                color: "#8e44ad",
+                image: "assets/appreciation-cert.jpg"
+            }
+        };
+        
+        function openModal(certType) {
+            const modal = document.getElementById('certModal');
+            const cert = certData[certType];
+            
+            if (cert) {
+                document.getElementById('modalTitle').textContent = cert.title;
+                document.getElementById('modalDescription').textContent = cert.description;
+                document.getElementById('modalIssuer').textContent = `Issued by: ${cert.issuer}`;
+                
+                const modalImg = document.getElementById('modalCertImg');
+                modalImg.innerHTML = `<img src="${cert.image}" alt="${cert.title} certificate">`;
+                modalImg.style.background = '#f8f9fa';
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function openImageModal(imageSrc, title, description) {
+            const modal = document.getElementById('certModal');
+            const modalImg = document.getElementById('modalCertImg');
+
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalIssuer').textContent = '';
+            modalImg.innerHTML = `<img src="${imageSrc}" alt="${title} preview">`;
+            modalImg.style.background = '#f8f9fa';
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('certModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('certModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Add click handlers for email links in contact section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all email links work properly
+            const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+            emailLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Let the browser handle the mailto link naturally
+                    console.log('Email link clicked:', this.href);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
